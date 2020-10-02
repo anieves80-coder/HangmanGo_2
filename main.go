@@ -10,11 +10,12 @@ import (
 var inWord = word{}
 var guessWord string
 var wordCnt int
+var dashCnt int
 var err int
 var verifyErr bool
 
 func main(){	
-	guessWord = inWord.getInput()	
+	guessWord, dashCnt = inWord.getInput()	
 	showWord()
 	getChars()
 }
@@ -53,7 +54,7 @@ func setChar(char string){
 	
 	if err >= 7 {
 		fmt.Println("You LOSE!!!\n", "Word was",guessWord)
-	} else if wordCnt < len(inWord){
+	} else if wordCnt < len(inWord)-dashCnt {
 		getChars()
 	} else {
 		fmt.Println("You WIN!!!", "Word was",guessWord)
